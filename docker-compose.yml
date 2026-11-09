@@ -1,14 +1,14 @@
 version: "3.9"
-services:
-  app:
+services:      # A service is a container in docker-compose run 
+  app:          #app means django project
     build:
-      context: .
-      args:
-        - DEV=true
+      context: .  #context .  means current directory
+      args:       #build args are used to pass build-time variables to the Dockerfile
+        - DEV=true    # passes the true
     ports:
-      - "8000:8000"
-    volumes:
-      - ./app:/app
+      - "8000:8000"   # maps port 8000 of the host to port 8000 of the container
+    volumes:        # A volume allow files to be shared between the computer and the container
+      - ./app:/app  #folder name app in the current directory is mounted to /app in the container
     command: >
       sh -c 
       "python manage.py wait_for_db &&

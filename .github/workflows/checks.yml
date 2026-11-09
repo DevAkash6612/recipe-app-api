@@ -1,4 +1,4 @@
-on: [push]
+on: [push]  #push the code github workflow to run on push events
 
 jobs:
   test-lint:
