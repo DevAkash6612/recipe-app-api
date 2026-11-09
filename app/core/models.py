@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
     PermissionsMixin
 
+
 class UserManager(BaseUserManager):
     """Manager for users"""
 
@@ -15,17 +16,19 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
 
         return user
+
     def create_superuser(self, email, password=None, **extra_fields):
         """Create and return a new superuser"""
         extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)   
+        extra_fields.setdefault('is_superuser', True)
 
         return self.create_user(
             email,
             password,
             **extra_fields
         )
-    
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     """Manager for users"""
 
